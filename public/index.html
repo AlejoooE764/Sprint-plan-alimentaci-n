@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>NutriFit - Planes de Alimentación</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFit - Planes de Alimentación</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="container">
     <header>
-      <h1 class="app-title">NutriFit 🥗</h1>
-      <p class="tagline">Planes de alimentación personalizados para un estilo de vida saludable</p>
+        <h1>Planes de Alimentación</h1>
     </header>
 
-    <section class="form-section">
-      <h2>Id Usuario</h2>
-      <input type="text" id="nombre" placeholder="Id" required />
+    <main>
+        <section id="create-plan-section">
+            <h2>Crear Nuevo Plan</h2>
+            <form id="create-plan-form">
+                <div>
+                    <label for="nombre">Nombre del Plan:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div>
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion"></textarea>
+                </div>
+                <div>
+                    <label for="fechaInicio">Fecha de Inicio:</label>
+                    <input type="date" id="fechaInicio" name="fechaInicio" required>
+                </div>
+                <div>
+                    <label for="fechaFin">Fecha de Fin:</label>
+                    <input type="date" id="fechaFin" name="fechaFin" required>
+                </div>
+                <div>
+                    <label for="usuarioId">ID del Usuario:</label>
+                    <input type="number" id="usuarioId" name="usuarioId" required min="1">
+                </div>
+                <button type="submit">Crear Plan</button>
+            </form>
+            <div id="create-message"></div>
+        </section>
 
-      <h2>Crear nuevo plan</h2>
-      <form id="formPlan">
-        <input type="text" id="nombre" placeholder="Nombre del plan" required />
-        <textarea id="descripcion" placeholder="Descripción"></textarea>
-        <h2>Fecha Inicio</h2>
-        <input type="date" id="fechaInicio" required />
-        <h2>Fecha Final</h2>
-        <input type="date" id="fechaFin" required />
+        <section id="plans-list-section">
+            <h2>Lista de Planes Existentes</h2>
+            <div id="plans-list">
+                <p>Cargando planes...</p>
+            </div>
+        </section>
+    </main>
 
-        <h3>Agregar comidas:</h3>
-        <div id="comidasContainer">
-          <div class="comida">
-            <select class="tipo">
-              <option value="desayuno">Desayuno</option>
-              <option value="almuerzo">Almuerzo</option>
-              <option value="cena">Cena</option>
-              <option value="snack">Snack</option>
-            </select>
-            <input type="time" class="hora" />
-            <input type="text" class="descripcion" placeholder="Descripción de la comida" required />
-          </div>
-        </div>
+    <footer>
+        <p>&copy; 2024 NutriFit</p>
+    </footer>
 
-        <button type="button" class="add-btn" onclick="agregarComida()">+ Comida</button>
-        <button type="submit" class="submit-btn">Crear plan</button>
-      </form>
-    </section>
-
-    <section class="planes-section">
-      <h2>Planes existentes</h2>
-      <ul id="listaPlanes"></ul>
-    </section>
-  </div>
-
-  <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
