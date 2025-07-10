@@ -1,69 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriFit - Planes de Alimentación</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>NutriFit - Planes de Alimentación</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="container">
     <header>
-        <h1>Planes de Alimentación</h1>
+      <h1 class="app-title">NutriFit 🥗</h1>
+      <p class="tagline">Planes de alimentación personalizados para un estilo de vida saludable</p>
     </header>
 
-    <main>
-        <section id="controls-section">
-            <button id="open-create-plan-modal-button" class="button">Crear Nuevo Plan</button>
-        </section>
-
-        <!-- Modal for Creating Plan -->
-        <div id="create-plan-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-button" id="close-create-plan-modal-button">&times;</span>
-                <h2>Crear Nuevo Plan</h2>
-                <form id="create-plan-form">
-                    <div>
-                        <label for="nombre">Nombre del Plan:</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                    </div>
-                    <div>
-                        <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion"></textarea>
-                    </div>
-                    <div>
-                        <label for="fechaInicio">Fecha de Inicio:</label>
-                        <input type="date" id="fechaInicio" name="fechaInicio" required>
-                    </div>
-                    <div>
-                        <label for="fechaFin">Fecha de Fin:</label>
-                        <input type="date" id="fechaFin" name="fechaFin" required>
-                    </div>
-                    <div>
-                        <label for="usuarioId">ID del Usuario:</label>
-                        <input type="number" id="usuarioId" name="usuarioId" required min="1">
-                    </div>
-                    <button type="submit">Crear Plan</button>
-                </form>
-                <div id="create-message" class="message"></div>
-            </div>
+    <section class="form-section">
+      <h2>Crear nuevo plan</h2>
+      <form id="formPlan">
+        <div>
+          <label for="nombre">Nombre del plan:</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Plan de aumento muscular" required />
+        </div>
+        <div>
+          <label for="descripcionPlan">Descripción del plan:</label>
+          <textarea id="descripcionPlan" name="descripcionPlan" placeholder="Ej: Dieta alta en proteínas y carbohidratos..."></textarea>
+        </div>
+        <div>
+          <label for="fechaInicio">Fecha de Inicio:</label>
+          <input type="date" id="fechaInicio" name="fechaInicio" required />
+        </div>
+        <div>
+          <label for="fechaFin">Fecha de Fin:</label>
+          <input type="date" id="fechaFin" name="fechaFin" required />
         </div>
 
-        <section id="plans-list-section">
-            <h2>Lista de Planes Existentes</h2>
-            <div id="loading-indicator" class="loading-indicator">
-                <p>Cargando planes...</p>
-            </div>
-            <div id="plans-list">
-                <!-- Planes se cargarán aquí por JavaScript -->
-            </div>
-            <div id="delete-message" class="message"></div>
-        </section>
-    </main>
+        <!-- Placeholder for Usuario ID - Assuming this will be needed by the backend based on previous work -->
+        <div>
+            <label for="usuarioId">ID del Usuario asignado al plan:</label>
+            <input type="number" id="usuarioId" name="usuarioId" placeholder="Ej: 1" required min="1" />
+        </div>
 
-    <footer>
-        <p>&copy; 2024 NutriFit</p>
-    </footer>
+        <h3>Agregar comidas:</h3>
+        <div id="comidasContainer">
+          <!-- Comida template (will be cloned by JS, first one can be here or added by JS) -->
+          <fieldset class="comida" data-comida-index="0">
+            <legend>Comida 1</legend>
+            <div>
+              <label for="tipoComida-0">Tipo:</label>
+              <select id="tipoComida-0" name="comidas[0][tipo]" class="tipoComida">
+                <option value="desayuno">Desayuno</option>
+                <option value="almuerzo">Almuerzo</option>
+                <option value="cena">Cena</option>
+                <option value="snack">Snack</option>
+              </select>
+            </div>
+            <div>
+              <label for="horaComida-0">Hora:</label>
+              <input type="time" id="horaComida-0" name="comidas[0][hora]" class="horaComida" />
+            </div>
+            <div>
+              <label for="descripcionComida-0">Descripción de la comida:</label>
+              <input type="text" id="descripcionComida-0" name="comidas[0][descripcion]" class="descripcionComida" placeholder="Ej: Pechuga de pollo con arroz" required />
+            </div>
+            <button type="button" class="remove-comida-btn" style="display:none;">Eliminar Comida</button>
+          </fieldset>
+        </div>
 
-    <script src="js/main.js"></script>
+        <button type="button" id="addComidaBtn" class="add-btn">+ Comida</button>
+        <button type="submit" class="submit-btn">Crear plan</button>
+        <div id="formPlanMessage" class="message" style="display:none;"></div>
+      </form>
+    </section>
+
+    <section class="planes-section">
+      <h2>Planes existentes</h2>
+      <div id="listaPlanesLoading" class="loading-indicator" style="display:none;">Cargando planes...</div>
+      <ul id="listaPlanes">
+        <!-- Planes se cargarán aquí -->
+      </ul>
+      <div id="listaPlanesMessage" class="message" style="display:none;"></div>
+    </section>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

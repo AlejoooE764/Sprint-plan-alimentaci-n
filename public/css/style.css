@@ -4,38 +4,43 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #fdf6f6; /* Lighter red-tinged background */
     color: #333;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
 /* Header Styles */
 header {
-    background-color: #c0392b; /* Red background */
+    background-color: #c0392b; /* Main Red */
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
-    /* border-bottom: #e74c3c 3px solid; Darker red or complementary */
+    border-radius: 8px 8px 0 0; /* Rounded top corners if container has bg */
 }
 
-header h1 {
+header .app-title {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
-/* Main Content Styles */
-main {
-    padding: 1rem;
-    max-width: 960px;
-    margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
+header .tagline {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    color: #f5c6cb; /* Lighter red for tagline */
 }
 
+/* Section Styles */
 section {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     padding: 1.5rem;
-    border-bottom: 1px solid #eee;
 }
 
 section:last-child {
@@ -43,163 +48,186 @@ section:last-child {
 }
 
 h2 {
-    color: #333;
+    color: #c0392b; /* Main Red for headings */
     margin-top: 0;
-    border-bottom: 2px solid #e74c3c; /* Red border bottom for h2 */
+    border-bottom: 2px solid #e74c3c; /* Lighter Red for border */
     padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    color: #c0392b;
+    margin-top: 1.5rem;
     margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 /* Form Styles */
-form div {
+#formPlan div, fieldset.comida > div { /* Target divs directly under form and fieldset for spacing */
     margin-bottom: 1rem;
 }
 
-form label {
+#formPlan label, fieldset.comida label {
     display: block;
     margin-bottom: .5rem;
     font-weight: bold;
+    color: #555;
 }
 
-form input[type="text"],
-form input[type="date"],
-form input[type="number"],
-form textarea {
+#formPlan input[type="text"],
+#formPlan input[type="date"],
+#formPlan input[type="number"],
+#formPlan input[type="time"],
+#formPlan textarea,
+#formPlan select,
+fieldset.comida input[type="text"],
+fieldset.comida input[type="time"],
+fieldset.comida select {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.85rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box; /* Important for width 100% */
+    box-sizing: border-box;
+    font-size: 0.95rem;
+}
+#formPlan input:focus, #formPlan textarea:focus, #formPlan select:focus,
+fieldset.comida input:focus, fieldset.comida select:focus {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+    outline: none;
 }
 
-form textarea {
-    min-height: 80px;
+
+#formPlan textarea {
+    min-height: 100px;
     resize: vertical;
 }
 
-button, .button {
+/* Button Styles */
+button, .button { /* General button styling */
     display: inline-block;
-    background-color: #e74c3c; /* Red background for buttons */
+    background-color: #e74c3c; /* Lighter Red */
     color: #fff;
-    padding: 0.75rem 1.5rem;
+    padding: 0.85rem 1.7rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
     font-size: 1rem;
     transition: background-color 0.3s ease;
+    margin-right: 0.5rem; /* Space between buttons */
 }
+button:last-child, .button:last-child {
+    margin-right: 0;
+}
+
 
 button:hover, .button:hover {
-    background-color: #c0392b; /* Darker red on hover */
+    background-color: #c0392b; /* Main Red on hover */
 }
 
-/* Secondary button style (e.g., for less prominent actions) */
-.button-secondary {
-    background-color: #f39c12; /* Orange for secondary, or a lighter red/grey */
+.add-btn { /* Specific style for add button if needed, e.g., different color */
+    background-color: #27ae60; /* Green for "add" actions */
+}
+.add-btn:hover {
+    background-color: #229954;
+}
+
+.remove-comida-btn {
+    background-color: #95a5a6; /* Grey for remove, less prominent */
     color: #fff;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    display: inline-block; /* Ensure it's not full width if not intended */
 }
-.button-secondary:hover {
-    background-color: #e67e22; /* Darker orange */
+.remove-comida-btn:hover {
+    background-color: #7f8c8d;
 }
 
+
+.submit-btn { /* Primary action button */
+    background-color: #c0392b; /* Main Red for submit */
+}
+.submit-btn:hover {
+    background-color: #a93226; /* Darker Red */
+}
+
+
+/* Comida Fieldset Styles */
+fieldset.comida {
+    border: 1px solid #e74c3c; /* Lighter Red border */
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    background-color: #fdfefe; /* Slightly off-white */
+}
+
+fieldset.comida legend {
+    font-weight: bold;
+    color: #c0392b; /* Main Red */
+    padding: 0 0.5rem;
+}
 
 /* Plans List Styles */
-#plans-list ul {
+#listaPlanes {
     list-style-type: none;
     padding: 0;
 }
 
-#plans-list li {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-left: 5px solid #e74c3c; /* Red left border for plan items */
-    padding: 1rem;
+#listaPlanes li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-left: 5px solid #c0392b; /* Main Red accent */
+    padding: 1.5rem;
     margin-bottom: 1rem;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
-#plans-list li strong { /* Main strong tag in plan item, e.g. Plan Name */
-    color: #c0392b; /* Darker Red for plan names */
-    font-size: 1.2rem;
+#listaPlanes li strong.plan-nombre { /* For plan name specifically if needed */
+    color: #c0392b;
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
-/* Comidas list styles */
-.comidas-list {
-    list-style-type: disc;
-    margin-left: 20px;
-    margin-top: 0.5rem;
+/* Nested comidas list within a plan item */
+.comidas-display-list {
+    list-style-type: none; /* Or 'disc' if preferred */
+    margin-top: 0.75rem;
     padding-left: 1rem;
-    border-left: 2px solid #e74c3c; /* Red border for comidas list */
+    border-left: 3px solid #e74c3c; /* Lighter Red */
 }
-.comidas-list li {
+.comidas-display-list li {
     font-size: 0.9rem;
-    /* Keep comida item styling subtle */
-    background-color: #fff; /* White background for comida items */
-    border: none;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
+    background-color: #f9f9f9; /* Different background for comidas in list */
+    border: 1px dashed #eee;
+    border-left: none; /* Remove double border */
     box-shadow: none;
 }
-
-
-/* Modal Styles */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+.comidas-display-list li strong { /* For comida type like "Desayuno" */
+    color: #333; /* Back to dark color for readability */
+    font-size: 1rem; /* Reset size if needed */
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto; /* 10% from the top and centered */
-    padding: 25px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-width: 600px;
-    border-radius: 8px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
 
-.close-button {
-    color: #aaa;
-    float: right; /* Positioned at the top right */
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Loading Indicator Styles */
+/* Loading Indicator & Message Styles */
 .loading-indicator {
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
     font-style: italic;
     color: #777;
 }
 
-/* Message Styles (for success/error feedback) */
 .message {
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0; /* Give messages some space */
     border-radius: 4px;
     text-align: center;
+    font-size: 0.95rem;
 }
 .message.success {
     background-color: #d4edda;
@@ -212,7 +240,8 @@ button:hover, .button:hover {
     border: 1px solid #f5c6cb;
 }
 
-/* Footer Styles */
+/* Footer (if you add one back) */
+/*
 footer {
     text-align: center;
     padding: 1.5rem 0;
@@ -220,40 +249,27 @@ footer {
     color: #fff;
     margin-top: 2rem;
 }
+*/
 
-/* Delete button specific style */
-.delete-button {
-    /* background-color: #dc3545; Already red, keep or adjust if needed */
-    /* color: white; */
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
-    margin-left: 10px;
-    float: right;
+/* Plan controls in the list (delete, toggle, etc.) */
+.plan-controls button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
 }
-/* Hover state will be inherited from general button:hover if not overridden */
-
-/* Toggle Comidas Button & User Stats Button - specific styles if needed, otherwise will inherit general button style */
-.toggle-comidas-button { /* Already inherits primary button style */
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
-    margin-right: 5px;
-}
-.user-stats-button { /* Uses .button-secondary for different color */
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
-    margin-right: 5px;
-}
-
-
-/* Styling for the plan controls div to group buttons */
 .plan-controls {
-    float: right; /* Align button group to the right */
-    margin-left: 10px; /* Space from the plan content */
+    float: right;
+    margin-bottom: 0.5rem; /* Space below controls before plan details */
 }
-
-/* Clearfix for floated elements within plan list items */
-#plans-list li::after {
+#listaPlanes li::after { /* Clearfix for floated controls */
     content: "";
     clear: both;
     display: table;
+}
+
+/* Ensure inputs in comidasContainer within the form are also full width */
+#comidasContainer .comida input[type="text"],
+#comidasContainer .comida input[type="time"],
+#comidasContainer .comida select {
+    width: 100%; /* This might be redundant if already covered by general form input styles */
 }
