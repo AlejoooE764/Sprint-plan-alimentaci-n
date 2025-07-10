@@ -21,7 +21,20 @@ model AlimentacionPlan {
   fechaFin    DateTime
   creadoEn    DateTime @default(now())
   actualizadoEn DateTime @updatedAt
+  usuarioId   Int? // Optional: Set to Int if a plan must have a user
+  usuario     Usuario? @relation(fields: [usuarioId], references: [id]) // Optional: Set to Usuario if a plan must have a user
   comidas     Comida[]
+}
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  email     String   @unique
+  // Add other user-specific fields here, e.g., password, role, etc.
+  // For now, keeping it simple.
+  planes    AlimentacionPlan[]
+  creadoEn  DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
 }
 
 model Comida {
