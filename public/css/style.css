@@ -10,11 +10,11 @@ body {
 
 /* Header Styles */
 header {
-    background-color: #333;
+    background-color: #c0392b; /* Red background */
     color: #fff;
     padding: 1rem 0;
     text-align: center;
-    border-bottom: #0779e4 3px solid;
+    /* border-bottom: #e74c3c 3px solid; Darker red or complementary */
 }
 
 header h1 {
@@ -45,7 +45,7 @@ section:last-child {
 h2 {
     color: #333;
     margin-top: 0;
-    border-bottom: 2px solid #0779e4;
+    border-bottom: 2px solid #e74c3c; /* Red border bottom for h2 */
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
 }
@@ -79,7 +79,7 @@ form textarea {
 
 button, .button {
     display: inline-block;
-    background-color: #0779e4;
+    background-color: #e74c3c; /* Red background for buttons */
     color: #fff;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -91,8 +91,18 @@ button, .button {
 }
 
 button:hover, .button:hover {
-    background-color: #0056b3;
+    background-color: #c0392b; /* Darker red on hover */
 }
+
+/* Secondary button style (e.g., for less prominent actions) */
+.button-secondary {
+    background-color: #f39c12; /* Orange for secondary, or a lighter red/grey */
+    color: #fff;
+}
+.button-secondary:hover {
+    background-color: #e67e22; /* Darker orange */
+}
+
 
 /* Plans List Styles */
 #plans-list ul {
@@ -103,14 +113,15 @@ button:hover, .button:hover {
 #plans-list li {
     background-color: #f9f9f9;
     border: 1px solid #eee;
+    border-left: 5px solid #e74c3c; /* Red left border for plan items */
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-#plans-list li strong {
-    color: #0779e4;
+#plans-list li strong { /* Main strong tag in plan item, e.g. Plan Name */
+    color: #c0392b; /* Darker Red for plan names */
     font-size: 1.2rem;
 }
 
@@ -120,10 +131,11 @@ button:hover, .button:hover {
     margin-left: 20px;
     margin-top: 0.5rem;
     padding-left: 1rem;
-    border-left: 2px solid #0779e4;
+    border-left: 2px solid #e74c3c; /* Red border for comidas list */
 }
 .comidas-list li {
     font-size: 0.9rem;
+    /* Keep comida item styling subtle */
     background-color: #fff; /* White background for comida items */
     border: none;
     padding: 0.5rem;
@@ -211,19 +223,35 @@ footer {
 
 /* Delete button specific style */
 .delete-button {
-    background-color: #dc3545; /* Red color for delete */
-    color: white;
+    /* background-color: #dc3545; Already red, keep or adjust if needed */
+    /* color: white; */
     padding: 0.3rem 0.6rem;
     font-size: 0.8rem;
-    margin-left: 10px; /* Space it from other content */
-    float: right; /* Align to the right of the plan item */
+    margin-left: 10px;
+    float: right;
+}
+/* Hover state will be inherited from general button:hover if not overridden */
+
+/* Toggle Comidas Button & User Stats Button - specific styles if needed, otherwise will inherit general button style */
+.toggle-comidas-button { /* Already inherits primary button style */
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+.user-stats-button { /* Uses .button-secondary for different color */
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    margin-right: 5px;
 }
 
-.delete-button:hover {
-    background-color: #c82333; /* Darker red on hover */
+
+/* Styling for the plan controls div to group buttons */
+.plan-controls {
+    float: right; /* Align button group to the right */
+    margin-left: 10px; /* Space from the plan content */
 }
 
-/* Clearfix for floated elements like delete button */
+/* Clearfix for floated elements within plan list items */
 #plans-list li::after {
     content: "";
     clear: both;

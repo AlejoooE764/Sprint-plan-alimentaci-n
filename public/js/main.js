@@ -133,10 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
         plans.forEach(plan => {
             const li = document.createElement('li');
             const deleteButton = `<button class="delete-button" data-plan-id="${plan.id}">Eliminar</button>`;
+            const toggleComidasButton = `<button class="toggle-comidas-button" data-plan-id-comidas="${plan.id}">Ver Comidas</button>`;
+            const userStatsButton = `<button class="user-stats-button button-secondary" data-user-id-stats="${plan.usuarioId}" title="Ver estadísticas para Usuario ${plan.usuarioId}">Estadísticas Usuario</button>`;
 
-            let comidasHtml = 'No hay comidas registradas para este plan.';
+            let comidasHtml = '';
             if (plan.comidas && plan.comidas.length > 0) {
-                comidasHtml = '<ul class="comidas-list">';
+                comidasHtml = `<ul class="comidas-list" id="comidas-list-${plan.id}" style="display: none;">`; // Initially hidden
                 plan.comidas.forEach(comida => {
                     comidasHtml += `
                         <li>
@@ -146,16 +148,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                 });
                 comidasHtml += '</ul>';
+            } else {
+                comidasHtml = '<p>No hay comidas registradas para este plan.</p>';
             }
 
+            // Assemble button group or place them strategically
+            let planControls = `<div class="plan-controls">`;
+            if (plan.comidas && plan.comidas.length > 0) {
+                planControls += toggleComidasButton;
+            }
+            planControls += userStatsButton; // Added user stats button here
+            planControls += deleteButton; // Delete button moved here for grouping
+            planControls += `</div>`;
+
+
             li.innerHTML = `
-                ${deleteButton}
+                ${planControls}
                 <strong>${plan.nombre}</strong> (ID: ${plan.id})<br>
                 Usuario ID: ${plan.usuarioId} (Nombre: ${plan.usuario ? plan.usuario.nombre : 'N/A'})<br>
                 Descripción: ${plan.descripcion || 'N/A'}<br>
                 Inicio: ${new Date(plan.fechaInicio).toLocaleDateString()} - Fin: ${new Date(plan.fechaFin).toLocaleDateString()}<br>
-                <strong>Comidas:</strong>
-                ${comidasHtml}
+                <div class="comidas-container">
+                    ${comidasHtml}
+                </div>
             `;
             ul.appendChild(li);
         });
@@ -279,6 +294,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (planId) {
                         handleDeletePlan(parseInt(planId, 10));
                     }
+                } else if (event.target.classList.contains('toggle-comidas-button')) {
+                    const planId = event.target.dataset.planIdComidas;
+                    const comidasList = document.getElementById(`comidas-list-${planId}`);
+                    if (comidasList) {
+                        if (comidasList.style.display === 'none') {
+                            comidasList.style.display = 'block'; // Or 'list-item' or '' depending on desired block behavior
+                            event.target.textContent = 'Ocultar Comidas';
+                        } else {
+                            comidasList.style.display = 'none';
+                            event.target.textContent = 'Ver Comidas';
+                        }
+                    }
+                } else if (event.target.classList.contains('user-stats-button')) {
+                    const userId = event.target.dataset.userIdStats;
+                    alert(`La visualización de estadísticas para el usuario ${userId} estará disponible próximamente!`);
                 }
             });
         }
