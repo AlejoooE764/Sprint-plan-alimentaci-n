@@ -1,93 +1,231 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* General Body Styles */
 body {
-  background-color: white;
-  font-family: 'Segoe UI', sans-serif;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-.container {
-  width: 100%;
-  max-width: 900px;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: #0779e4 3px solid;
 }
 
-.app-title {
-  text-align: center;
-  color: #e60023; /* Rojo NutriFit */
-  font-size: 3rem;
-  margin-bottom: 10px;
+header h1 {
+    margin: 0;
+    font-size: 2rem;
 }
 
-.tagline {
-  text-align: center;
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-  color: #666;
+/* Main Content Styles */
+main {
+    padding: 1rem;
+    max-width: 960px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
 }
 
-input, textarea, select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  width: 100%;
+section:last-child {
+    border-bottom: none;
 }
 
-textarea {
-  resize: vertical;
+h2 {
+    color: #333;
+    margin-top: 0;
+    border-bottom: 2px solid #0779e4;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+/* Form Styles */
+form div {
+    margin-bottom: 1rem;
 }
 
-.add-btn {
-  background-color: #fbe0e4;
-  color: #e60023;
+form label {
+    display: block;
+    margin-bottom: .5rem;
+    font-weight: bold;
 }
 
-.submit-btn {
-  background-color: #e60023;
-  color: white;
+form input[type="text"],
+form input[type="date"],
+form input[type="number"],
+form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Important for width 100% */
 }
 
-h2, h3 {
-  color: #e60023;
-  margin-top: 20px;
+form textarea {
+    min-height: 80px;
+    resize: vertical;
 }
 
-#listaPlanes {
-  margin-top: 20px;
-  list-style-type: none;
+button, .button {
+    display: inline-block;
+    background-color: #0779e4;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-#listaPlanes li {
-  background: #f8f8f8;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-left: 5px solid #e60023;
-  border-radius: 6px;
+button:hover, .button:hover {
+    background-color: #0056b3;
+}
+
+/* Plans List Styles */
+#plans-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#plans-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#plans-list li strong {
+    color: #0779e4;
+    font-size: 1.2rem;
+}
+
+/* Comidas list styles */
+.comidas-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid #0779e4;
+}
+.comidas-list li {
+    font-size: 0.9rem;
+    background-color: #fff; /* White background for comida items */
+    border: none;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: none;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 25px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-button {
+    color: #aaa;
+    float: right; /* Positioned at the top right */
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Loading Indicator Styles */
+.loading-indicator {
+    text-align: center;
+    padding: 1rem;
+    font-style: italic;
+    color: #777;
+}
+
+/* Message Styles (for success/error feedback) */
+.message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: #333;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+/* Delete button specific style */
+.delete-button {
+    background-color: #dc3545; /* Red color for delete */
+    color: white;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    margin-left: 10px; /* Space it from other content */
+    float: right; /* Align to the right of the plan item */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Clearfix for floated elements like delete button */
+#plans-list li::after {
+    content: "";
+    clear: both;
+    display: table;
 }

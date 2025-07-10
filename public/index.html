@@ -12,39 +12,51 @@
     </header>
 
     <main>
-        <section id="create-plan-section">
-            <h2>Crear Nuevo Plan</h2>
-            <form id="create-plan-form">
-                <div>
-                    <label for="nombre">Nombre del Plan:</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
-                <div>
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion"></textarea>
-                </div>
-                <div>
-                    <label for="fechaInicio">Fecha de Inicio:</label>
-                    <input type="date" id="fechaInicio" name="fechaInicio" required>
-                </div>
-                <div>
-                    <label for="fechaFin">Fecha de Fin:</label>
-                    <input type="date" id="fechaFin" name="fechaFin" required>
-                </div>
-                <div>
-                    <label for="usuarioId">ID del Usuario:</label>
-                    <input type="number" id="usuarioId" name="usuarioId" required min="1">
-                </div>
-                <button type="submit">Crear Plan</button>
-            </form>
-            <div id="create-message"></div>
+        <section id="controls-section">
+            <button id="open-create-plan-modal-button" class="button">Crear Nuevo Plan</button>
         </section>
+
+        <!-- Modal for Creating Plan -->
+        <div id="create-plan-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="close-create-plan-modal-button">&times;</span>
+                <h2>Crear Nuevo Plan</h2>
+                <form id="create-plan-form">
+                    <div>
+                        <label for="nombre">Nombre del Plan:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div>
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion"></textarea>
+                    </div>
+                    <div>
+                        <label for="fechaInicio">Fecha de Inicio:</label>
+                        <input type="date" id="fechaInicio" name="fechaInicio" required>
+                    </div>
+                    <div>
+                        <label for="fechaFin">Fecha de Fin:</label>
+                        <input type="date" id="fechaFin" name="fechaFin" required>
+                    </div>
+                    <div>
+                        <label for="usuarioId">ID del Usuario:</label>
+                        <input type="number" id="usuarioId" name="usuarioId" required min="1">
+                    </div>
+                    <button type="submit">Crear Plan</button>
+                </form>
+                <div id="create-message" class="message"></div>
+            </div>
+        </div>
 
         <section id="plans-list-section">
             <h2>Lista de Planes Existentes</h2>
-            <div id="plans-list">
+            <div id="loading-indicator" class="loading-indicator">
                 <p>Cargando planes...</p>
             </div>
+            <div id="plans-list">
+                <!-- Planes se cargarán aquí por JavaScript -->
+            </div>
+            <div id="delete-message" class="message"></div>
         </section>
     </main>
 
